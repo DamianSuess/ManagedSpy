@@ -21,15 +21,15 @@ namespace ManagedSpy {
 		private ControlProxy currentProxy = null;
 		EventFilterDialog dialog = new EventFilterDialog();
 
-		public MainForm() {
+        public MainForm() {
 			InitializeComponent();
-		}
+        }
 
-		private void exitToolStripMenuItem_Click(object sender, EventArgs e) {
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e) {
 			Application.Exit();
 		}
 
-		private void Form1_Load(object sender, EventArgs e) {
+		private void MainForm_Load(object sender, EventArgs e) {
 			RefreshWindows();
 		}
 
@@ -56,16 +56,16 @@ namespace ManagedSpy {
 							if (procnode == null) {
 								procnode = treeWindow.Nodes.Add(proc.Id.ToString(),
 									proc.ProcessName +
-									"  " + proc.MainWindowTitle + 
+									"  " + proc.MainWindowTitle +
 									" [" + proc.Id.ToString() + "]");
 								procnode.Tag = proc;
 							}
 							string name = String.IsNullOrEmpty(cproxy.GetComponentName()) ?
 								"<noname>" : cproxy.GetComponentName();
-							TreeNode node = procnode.Nodes.Add(cproxy.Handle.ToString(), 
-								name + 
+							TreeNode node = procnode.Nodes.Add(cproxy.Handle.ToString(),
+								name +
 								"     [" +
-								cproxy.GetClassName() + 
+								cproxy.GetClassName() +
 								"]");
 							node.Tag = cproxy;
 						}
@@ -198,7 +198,7 @@ namespace ManagedSpy {
 			}
 		}
 
-		private void Form1_FormClosing(object sender, FormClosingEventArgs e) {
+		private void MainForm_FormClosing(object sender, FormClosingEventArgs e) {
 			StopLogging();
 		}
 
